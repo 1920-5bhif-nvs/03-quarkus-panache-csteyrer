@@ -49,3 +49,42 @@ image::ERD.png[]
 `<groupId>io.quarkus</groupId>` +
 `<artifactId>quarkus-hibernate-orm-panache</artifactId>` +
 `</dependency>`
+
+=== Panache vs. Hibernate
+==== Benefits of Panache
+* less boilerplate code
+* easier for beginners
+* usage of really simple PanacheEntity if the project only needs some basic CRUD operations
+* a lot useful operations
+** e.g. `entityRepository.listAll()`
+* it is still possible to construct JPQL-Queries
+** e.g. `entityRepository.find("select e from Entity e")`
+
+==== Disadvantages of Panache
+* sparse documentation
+* fixing issues can be quite frustrating because of the lack of documentation and examples online
+
+== Entity Graph usage in this project
+
+Add the following to an entity class.
+
+....
+@Entity(name = "Bus")
+@NamedEntityGraph(
+        name = "bus-entity-graph",
+        attributeNodes = {
+                @NamedAttributeNode("tickets")
+        }
+)
+....
+
+Then the entity graph can be used in the respective repository:
+
+....
+public Bus getById(long id) {
+        EntityGraph eg = em.getEntityGraph("bus-entity-graph");
+        HashMap<String, Object> properties = new HashMap<>();
+        properties.put("javax.persistence.fetchgraph", eg);
+        return em.find(Bus.class, id, properties);
+}
+....
