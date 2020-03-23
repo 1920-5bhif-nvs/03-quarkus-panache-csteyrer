@@ -20,20 +20,21 @@ public class InitBean {
     @Transactional
     public void init(@Observes StartupEvent init)
     {
-        Bus bus = new Bus("typ1", "Franz");
-        BusStop busStop = new BusStop("Busstop1");
-        Schedule s1 = new Schedule(bus, busStop, LocalDateTime.of(2018, 12, 1, 10, 5));
-        bus.setSchedule(s1);
-        busStop.setSchedule(s1);
-        Ticket t1 = new Ticket("TimeTicket", 5, 0, 5, LocalDateTime.of(2018, 12, 1, 10, 5), busStop);
+        for (int i = 1; i <= 10; i++) {
+            Bus bus = new Bus("Typ"+i, "Name"+i);
+            BusStop busStop = new BusStop("Busstop"+i);
+            Schedule s1 = new Schedule(bus, busStop, LocalDateTime.of(2018, 12, 1, 10, 5));
+            bus.setSchedule(s1);
+            busStop.setSchedule(s1);
+            Ticket t1 = new Ticket("TimeTicket"+i, 5, 0, 5, LocalDateTime.of(2018, 12, 1, 10, 5), busStop);
 
-        t1.setBus(bus);
+            t1.setBus(bus);
 
 
-
-        em.persist(bus);
-        em.persist(busStop);
-        em.persist(s1);
-        em.persist(t1);
+            em.persist(bus);
+            em.persist(busStop);
+            em.persist(s1);
+            em.persist(t1);
+        }
     }
 }

@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NamedQueries({
-    @NamedQuery(name = "Bus.findAll", query = "select b from Bus b"),
-    @NamedQuery(name = "Bus.findByDriverName", query = "select b from Bus b where b.driverName = :DRIVERNAME")
-})
+@NamedEntityGraph(
+        name = "bus-entity-graph",
+        attributeNodes = {
+                @NamedAttributeNode("tickets")
+        }
+)
 public class Bus implements Serializable {
 
     @Id

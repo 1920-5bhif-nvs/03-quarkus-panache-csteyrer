@@ -1,53 +1,50 @@
 package at.htl.buscompany.rest;
 
-import at.htl.buscompany.model.Bus;
+import at.htl.buscompany.database.BusStopRepository;
 import at.htl.buscompany.model.BusStop;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 @Path("busStop")
 public class BusStopEndpoint {
 
     @Inject
-    EntityManager em;
+    BusStopRepository busStopRepository;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("{id}")
     public BusStop getBusStop(@PathParam("id") long id) {
-        return em.find(BusStop.class, id);
+        return busStopRepository.findById(id);
     }
 
     @POST
     public void postBusStop(BusStop busStop) {
-        em.persist(busStop);
+        busStopRepository.persist(busStop);
     }
 
     @PUT
     @Path("{id}")
     public void putBusStop(@PathParam("id") long id, BusStop newBusStop)
     {
-        BusStop busStop = em.find(BusStop.class, id);
+        BusStop busStop = busStopRepository.findById(id);
         if(busStop != null) {
             busStop.setBusStopName(newBusStop.getBusStopName());
         }
         else
-            em.persist(newBusStop);
+            busStopRepository.persist(newBusStop);
     }
 
     @DELETE
     @Path("{id}")
     public void deleteBusStop(@PathParam("id") long id)
     {
-        BusStop busStop = em.find(BusStop.class, id);
+        BusStop busStop = busStopRepository.findById(id);
         if(busStop != null)
         {
-            em.remove(busStop);
+            busStopRepository.delete(busStop);
         }
     }
 }

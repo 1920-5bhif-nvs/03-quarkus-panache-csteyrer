@@ -186,6 +186,7 @@
     <orderEntry type="library" name="Maven: io.agroal:agroal-pool:1.5" level="project" />
     <orderEntry type="library" name="Maven: io.quarkus:quarkus-jdbc-postgresql:0.21.1" level="project" />
     <orderEntry type="library" name="Maven: org.postgresql:postgresql:42.2.5" level="project" />
+    <orderEntry type="library" name="Maven: io.quarkus:quarkus-hibernate-orm-panache:0.21.1" level="project" />
     <orderEntry type="library" name="Maven: io.quarkus:quarkus-hibernate-orm:0.21.1" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.4.4.Final" level="project" />
     <orderEntry type="library" name="Maven: javax.persistence:javax.persistence-api:2.2" level="project" />
@@ -197,6 +198,7 @@
     <orderEntry type="library" name="Maven: org.hibernate:quarkus-local-cache:0.1.0" level="project" />
     <orderEntry type="library" name="Maven: com.github.ben-manes.caffeine:caffeine:2.6.2" level="project" />
     <orderEntry type="library" name="Maven: io.quarkus:quarkus-caffeine:0.21.1" level="project" />
+    <orderEntry type="library" name="Maven: io.quarkus:quarkus-panache-common:0.21.1" level="project" />
     <orderEntry type="library" name="Maven: io.quarkus:quarkus-resteasy-jsonb:0.21.1" level="project" />
     <orderEntry type="library" name="Maven: io.quarkus:quarkus-jsonb:0.21.1" level="project" />
     <orderEntry type="library" name="Maven: org.eclipse:yasson:1.0.4" level="project" />

@@ -42,3 +42,10 @@ image::ERD.png[]
 
 === User Interface
 `localhost:8080/swagger-ui`
+
+== Panache
+=== Dependency
+`<dependency>` +
+`<groupId>io.quarkus</groupId>` +
+`<artifactId>quarkus-hibernate-orm-panache</artifactId>` +
+`</dependency>`
