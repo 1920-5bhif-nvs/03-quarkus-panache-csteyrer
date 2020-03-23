@@ -32,3 +32,13 @@ image::ERD.png[]
 == Running
 === DevMode
 `mvnw compile quarkus:dev`
+
+== Swagger
+=== Dependency
+`<dependency>` +
+`<groupId>io.quarkus</groupId>` +
+`<artifactId>quarkus-smallrye-openapi</artifactId>` +
+`</dependency>`
+
+=== User Interface
+`localhost:8080/swagger-ui`
